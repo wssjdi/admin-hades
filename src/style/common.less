@@ -1,0 +1,29 @@
+@import './default.less';
+// @colorA:'red';
+
+// div {
+//   color:@colorA;
+//   a {
+//     color:'black';
+//   }
+// }
+
+.container {
+  display: flex;
+  .nav-left {
+    widows: 15%;
+    min-width: 180px;
+    height: calc(100vh);//高度占满全屏的高度，也可以计算宽度
+    background-color:@colorR;
+  }
+  .main{
+    flex:1;
+    background-color: @colorL;//内容区的背景色，灰色
+    height: calc(100vh);
+  }
+  .content{
+    position: relative;
+    padding: 20px;
+  }
+}
+
