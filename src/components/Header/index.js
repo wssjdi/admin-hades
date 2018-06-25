@@ -23,9 +23,9 @@ export default class Header extends React.Component{
     this.getWeatherAPIData();
   }
 
-  componentWillUnmount(){
-    this.remove(setInterval);
-  }
+  // componentWillUnmount(){
+  //   this.remove(setInterval);
+  // }
 
   getWeatherAPIData(){
     let city = "苏州";
