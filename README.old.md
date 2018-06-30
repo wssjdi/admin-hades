@@ -160,8 +160,7 @@ Demo介绍:
   {this.props.match.params.questionId}
 
   页面不存在,跳转到通用的404页面:
-  <Route component={NoMatch}/>
-  
+  <Route component={NoMatch}/>  
           <Home>
             <Switch>
             {/* <Route exact={true} path="/" component={Main}/> */}

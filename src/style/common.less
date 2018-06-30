@@ -15,11 +15,13 @@
     min-width: 180px;
     height: calc(100vh);//高度占满全屏的高度，也可以计算宽度
     background-color:@colorR;
+    overflow: auto;//超过页面高度之后会自动滚动
   }
   .main{
     flex:1;
     background-color: @colorL;//内容区的背景色，灰色
     height: calc(100vh);
+    overflow: auto;
   }
   .content{
     position: relative;

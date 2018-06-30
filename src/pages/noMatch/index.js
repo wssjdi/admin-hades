@@ -7,8 +7,8 @@ export default class NoMatch extends React.Component{
   render(){
 
     return (
-        <div className="home-warp">
-          404 Not Found The Page !
+        <div className="nomatch-warp">
+          404 Not Found The "<code>{this.props.location.pathname}</code>" Page ! 
         </div>
     )
   }
