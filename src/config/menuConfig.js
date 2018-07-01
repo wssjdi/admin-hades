@@ -64,6 +64,10 @@ const menuList = [
               key:'/table/basic',
           },
           {
+              title:'动态表格',
+              key:'/table/dynamic',
+          },
+          {
               title:'高级表格',
               key:'/table/high',
           }

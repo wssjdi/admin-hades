@@ -47,6 +47,10 @@ export default class BasicTable extends React.Component {
       time:'09:30:00'
     }]
 
+    dataSource.map((item,index)=>{
+      item.key=index;
+    })
+
     this.setState({
       dataSource
     })
@@ -83,7 +87,7 @@ export default class BasicTable extends React.Component {
 
     return (
       <div>
-        <Card title="基础表格">
+        <Card title="基础静态表格">
           <Table columns={columns} bordered={true} dataSource={this.state.dataSource} pagination={false}/>
         </Card>
       </div>

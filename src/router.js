@@ -13,6 +13,8 @@ import Carousel from "./pages/ui/carousel";
 import FormLogin from "./pages/form/login";
 import RegisterForm from "./pages/form/register";
 import BasicTable from "./pages/table/basicTable";
+import DynamicTable from "./pages/table/dynamicTable";
+import HighTable from "./pages/table/highTable";
 import Admin from "./admin";
 import Home from './pages/home';
 import NoMatch from './pages/noMatch';
@@ -58,7 +60,8 @@ export default class IRouter extends React.Component{
                   <Route path ="/table" render={()=>
                       <Switch>
                         <Route path ="/table/basic" component={BasicTable} />
-                        <Route path ="/table/high" component={Modals} />
+                        <Route path ="/table/dynamic" component={DynamicTable} />
+                        <Route path ="/table/high" component={HighTable} />
                         <Route component={NoMatch} />
                       </Switch>
                   } />
