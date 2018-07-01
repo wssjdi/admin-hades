@@ -3,6 +3,13 @@ import {HashRouter as Router,Route,Switch} from "react-router-dom";
 import App from "./App";
 import Login from "./pages/login";
 import Buttons from "./pages/ui/button";
+import Modals from "./pages/ui/modals";
+import Loadings from "./pages/ui/loadings";
+import Notices from "./pages/ui/notices";
+import Messages from "./pages/ui/messages";
+import Tabs from "./pages/ui/tabs";
+import Gallery from "./pages/ui/gallery";
+import Carousel from "./pages/ui/carousel";
 import Admin from "./admin";
 import Home from './pages/home';
 import NoMatch from './pages/noMatch';
@@ -28,12 +35,13 @@ export default class IRouter extends React.Component{
                   <Route path ="/ui" render={()=>
                       <Switch>
                         <Route path ="/ui/buttons" component={Buttons} />
-                        <Route path ="/ui/modals" component={NoMatch} />
-                        <Route path ="/ui/loadings" component={NoMatch} />
-                        <Route path ="/ui/notification" component={NoMatch} />
-                        <Route path ="/ui/tabs" component={NoMatch} />
-                        <Route path ="/ui/gallery" component={NoMatch} />
-                        <Route path ="/ui/carousel" component={NoMatch} />
+                        <Route path ="/ui/modals" component={Modals} />
+                        <Route path ="/ui/loadings" component={Loadings} />
+                        <Route path ="/ui/notification" component={Notices} />
+                        <Route path ="/ui/messages" component={Messages} />
+                        <Route path ="/ui/tabs" component={Tabs} />
+                        <Route path ="/ui/gallery" component={Gallery} />
+                        <Route path ="/ui/carousel" component={Carousel} />
                         <Route component={NoMatch} />
                       </Switch>
                   } />
