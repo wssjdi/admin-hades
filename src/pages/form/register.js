@@ -74,7 +74,7 @@ class RegisterForm extends React.Component {
     //antd 提供的封装表达值获取工具
     const { getFieldDecorator} = this.props.form;
 
-    //生命响应式布局
+    //声明响应式布局
     const formItemLayout = {
       labelCol:{
         xs:24,
