@@ -9,6 +9,17 @@
 //   }
 // }
 
+ul,li{
+  list-style: none;
+}
+.clearfix{
+  &::after{
+      content:' ';
+      clear:both;
+      display: block;
+      visibility: hidden;
+  }
+}
 .container {
   display: flex;
   .nav-left {
@@ -38,5 +49,14 @@
   .ant-table-wrapper{
       margin-left: -1px;
       margin-right: -2px;
+  }
+}
+
+
+.common-page {
+  .content{
+    position: relative;
+    padding: 20px;    
+    min-height:calc(75vh);
   }
 }

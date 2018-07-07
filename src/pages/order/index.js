@@ -94,7 +94,7 @@ export default class Order extends React.Component{
                 this.setState({
                     orderConfirmVisble: false
                 })
-                this.requestList();
+                this.request();
             }
         })
     }

@@ -17,9 +17,11 @@ import DynamicTable from "./pages/table/dynamicTable";
 import HighTable from "./pages/table/highTable";
 import City from "./pages/city";
 import Order from './pages/order';
+import OrderDetail from './pages/order/detail';
 import Admin from "./admin";
 import Home from './pages/home';
 import NoMatch from './pages/noMatch';
+import Common from './common';
 
 export default class IRouter extends React.Component{
 
@@ -30,10 +32,13 @@ export default class IRouter extends React.Component{
         <App>          
           <Switch>
             <Route exact={true} path ="/login" component={Login} />
-            
-            {/* <Route path ="/admin" component={Admin} /> */}
-            <Route path ="/order/detail" component={Login} />    
-
+            <Route path ="/common" render={()=>
+                    <Common>
+                      <Switch>
+                        <Route path ="/common/order/detail/:orderId" component={OrderDetail} />
+                      </Switch>
+                    </Common>
+                  } />
             <Route path ="/" render={()=>
               <Admin>
                 <Switch>
@@ -66,7 +71,7 @@ export default class IRouter extends React.Component{
                         <Route component={NoMatch} />
                       </Switch>
                   } />
-                  <Route path ="/city" component={City}/>                  
+                  <Route path ="/city" component={City}/>
                   <Route path ="/order" component={Order} />
                   <Route component={NoMatch} />
                 </Switch>
