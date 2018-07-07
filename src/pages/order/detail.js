@@ -1,5 +1,5 @@
 import React from 'react';
-import {Form,Select,Card} from 'antd';
+import {Card} from 'antd';
 import Axios from '../../axios'
 import './detail.less';
 

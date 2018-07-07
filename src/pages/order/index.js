@@ -4,9 +4,11 @@ import Axios from '../../axios'
 import Utils from '../../utils/utils'
 import {columns,formItemLayout} from './columns';
 import  FilterForm from './FilterForm';
+import  BaseForm from '../../components/BaseForm';
 import "./index.less";
 
 const FormItem = Form.Item;
+
 
 export default class Order extends React.Component{
     state  = {
@@ -16,35 +18,57 @@ export default class Order extends React.Component{
     params = {
         page: 1
     }
+    
+    formList = [
+        {
+        type:'SELECT',
+        label:'城市',
+        field:'city_id',
+        placeholder:'全部',
+        initialValue:'0',
+        width:100,
+        list:[{id:'0',name:'全部'},{id:'1',name:'北京'},{id:'2',name:'天津'},{id:'3',name:'深圳'},{id:'4',name:'上海'},{id:'5',name:'广州'}],
+        },{
+        type:'时间查询',
+        },{
+        type:'SELECT',
+        label:'订单状态',
+        field:'status',
+        placeholder:'全部',
+        initialValue:'0',
+        width:100,
+        list:[{id:'0',name:'全部'},{id:'1',name:'进行中'},{id:'2',name:'结束行程'}],
+        }
+    ];
     componentDidMount(){
-        this.request()
+        this.requestList()
     }
-    request = ()=>{
+    requestList = ()=>{
+        debugger;
         let _this = this;
-        Axios.ajax({
-        url:'/order/list',
-        method:'get',
-        isShowLoading:true,
-        data:{
-            params:{
-            page:this.params.page,
-            }
-        }}).then((res)=>{
-            if(res.code === 0 || res.code === '0'){
-            //给每一行数据添加Key          
-            res.result.item_list.map((item,index)=>{
-                item.key=index;
-            })
-            this.setState({
-                dataSource:res.result.item_list,
-                pagination:Utils.pagination(res,(current)=>{
-                //翻页
-                _this.params.page = current;
-                this.request();
-                }),
-            });
-            }
-        });
+        Axios.requestList(_this,'/order/list',this.params);
+        // Axios.ajax({
+        // url:'/order/list',
+        // method:'get',
+        // isShowLoading:true,
+        // data:{
+        //     params:this.params,
+        // }}).then((res)=>{
+        //     if(res.code === 0 || res.code === '0'){
+        //     //给每一行数据添加Key          
+        //     res.result.item_list.map((item,index)=>{
+        //         item.key=index;
+        //     })
+        //     this.setState({
+        //         dataSource:res.result.item_list,
+        //         pagination:Utils.pagination(res,(current)=>{
+        //         //翻页
+        //         _this.params.page = current;
+        //         this.request();
+        //         }),
+        //     });
+        //     }
+        // });
     }
 
     // 订单结束确认
@@ -94,7 +118,7 @@ export default class Order extends React.Component{
                 this.setState({
                     orderConfirmVisble: false
                 })
-                this.request();
+                this.requestList();
             }
         })
     }
@@ -117,6 +141,12 @@ export default class Order extends React.Component{
         }
         window.open(`/#/common/order/detail/${item.id}`,'_blank')
     }
+
+    handleFilter = (params)=>{
+        this.params = params;
+        this.requestList();
+    }
+
     render(){
         const selectedRowKeys = this.state.selectedRowKeys;
         const rowSelection = {
@@ -126,7 +156,7 @@ export default class Order extends React.Component{
         return (
             <div>
                 <Card>
-                    <FilterForm />
+                    <BaseForm formList={this.formList} filterSubmit={this.handleFilter}/>
                 </Card>
                 <Card style={{marginTop:10}}>
                     <Button type="primary" onClick={this.openOrderDetail}>订单详情</Button>

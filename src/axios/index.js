@@ -1,6 +1,7 @@
 import Jsonp from "jsonp";
 import axios from "axios";
 import { Modal } from "antd";
+import Utils from "../utils/utils";
 
 export default class Axios{
 
@@ -55,5 +56,27 @@ export default class Axios{
     });
   }
 
+  static requestList(_this,url,params,isMock){
+    var data = {
+      params:params,
+      isMock:isMock,
+    }
+    this.ajax({url,data,method:'get'}).then((res)=>{
+      if(res.code === 0 || res.code === '0'){
+      //给每一行数据添加Key          
+      res.result.item_list.map((item,index)=>{
+          item.key=index;
+      })
+      _this.setState({
+          dataSource:res.result.item_list,
+          pagination:Utils.pagination(res,(current)=>{
+          //翻页
+          _this.params.page = current;
+          _this.requestList();
+          }),
+      });
+      }
+  });
+  }
 
 }
