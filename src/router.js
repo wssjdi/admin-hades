@@ -16,6 +16,7 @@ import BasicTable from "./pages/table/basicTable";
 import DynamicTable from "./pages/table/dynamicTable";
 import HighTable from "./pages/table/highTable";
 import City from "./pages/city";
+import Order from './pages/order';
 import Admin from "./admin";
 import Home from './pages/home';
 import NoMatch from './pages/noMatch';
@@ -29,7 +30,6 @@ export default class IRouter extends React.Component{
         <App>          
           <Switch>
             <Route exact={true} path ="/login" component={Login} />
-
             
             {/* <Route path ="/admin" component={Admin} /> */}
             <Route path ="/order/detail" component={Login} />    
@@ -66,7 +66,8 @@ export default class IRouter extends React.Component{
                         <Route component={NoMatch} />
                       </Switch>
                   } />
-                  <Route path ="/city" component={City}/>
+                  <Route path ="/city" component={City}/>                  
+                  <Route path ="/order" component={Order} />
                   <Route component={NoMatch} />
                 </Switch>
               </Admin>

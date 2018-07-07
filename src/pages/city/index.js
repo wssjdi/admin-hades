@@ -4,7 +4,6 @@ import './index.less';
 import ButtonGroup from 'antd/lib/button/button-group';
 import Axios from '../../axios';
 import Utils from '../../utils/utils';
-import utils from '../../utils/utils';
 
 const FormItem = Form.Item;
 const Option = Select.Option;
@@ -276,7 +275,7 @@ export default class City extends React.Component {
         title:'操作时间',
         dataIndex:'update_time',
         render(time){
-          return utils.formateDate(time);
+          return Utils.formateDate(time);
         }
       }
     ]
