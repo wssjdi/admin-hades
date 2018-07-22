@@ -16,8 +16,13 @@ import BasicTable from "./pages/table/basicTable";
 import DynamicTable from "./pages/table/dynamicTable";
 import HighTable from "./pages/table/highTable";
 import City from "./pages/city";
+import BikeMap from "./pages/map/bikeMap";
 import Order from './pages/order';
 import OrderDetail from './pages/order/detail';
+import Ebar from './pages/echarts/bar';
+import ELine from './pages/echarts/line';
+import EPie from './pages/echarts/pie';
+import Rich from './pages/rich';
 import Admin from "./admin";
 import Home from './pages/home';
 import NoMatch from './pages/noMatch';
@@ -71,8 +76,19 @@ export default class IRouter extends React.Component{
                         <Route component={NoMatch} />
                       </Switch>
                   } />
+                  <Route path ="/rich" component={Rich}/>
                   <Route path ="/city" component={City}/>
                   <Route path ="/order" component={Order} />
+                  <Route path ="/bikeMap" component={BikeMap} />                  
+                  <Route path ="/charts" render={()=>
+                      <Switch>
+                        <Route path ="/charts/bar" component={Ebar} />
+                        <Route path ="/charts/pie" component={EPie} />
+                        <Route path ="/charts/line" component={ELine} />
+                        <Route component={NoMatch} />
+                      </Switch>
+                  } />
+                  
                   <Route component={NoMatch} />
                 </Switch>
               </Admin>
